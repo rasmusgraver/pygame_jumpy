@@ -12,8 +12,6 @@ from imageLoader import *
 from player import Player
 from wood import init_platforms
 
-scroll = 0
-
 # set frame rate
 clock = pygame.time.Clock()
 
@@ -28,13 +26,14 @@ platform_group = pygame.sprite.Group()
 # Initierer 10 tilfeldige platformer
 init_platforms(platform_group)
 
-# Fikk ikke til den her helt... Bare tar en fast bakgrunn
-# def draw_bg(bg_scroll):
-#	screen.blit(bg_image, (0, 0 + bg_scroll))
-#	screen.blit(bg_image, (0, -SCREEN_HEIGHT + bg_scroll))
+def draw_bg(bg_scroll):
+	screen.blit(bg_image, (0, 0 + bg_scroll))
+	screen.blit(bg_image, (0, -SCREEN_HEIGHT + bg_scroll))
 
 def main():
-    # Game loop
+
+    bg_scroll = 0
+
     run = True
     while run:
 
@@ -46,8 +45,9 @@ def main():
 
         # Draw background
         # Bedre bare å ha bakgrunnen fast?
-        screen.blit(bg_image, (0,0))
-        # draw_bg(scroll)
+        # screen.blit(bg_image, (0,0))
+        bg_scroll += scroll
+        draw_bg(bg_scroll)
 
         # Update platforms
         platform_group.update(scroll)

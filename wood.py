@@ -14,13 +14,13 @@ class Wood(pygame.sprite.Sprite):
 
     def update(self, scroll):
         self.rect.y += scroll
-        
+
 
 
 def init_platforms(spriteGroup):
-    for i in range(10):
+    for i in range(MAX_PLATFORMS):
         width = random.randint(20, 50)
         x = random.randint(0, SCREEN_WIDTH - width)
-        y = random.randint(40, 60) + 40*(i+1)
+        y = SCREEN_HEIGHT - random.randint(40, 60) - 70*(i+1)
         w = Wood(x, y, width)
         spriteGroup.add(w)
