@@ -42,6 +42,12 @@ class Player():
         self.dy += GRAVITY
         self.rect.y += self.dy
 
+        scroll = 0
+        if self.rect.top < SCROLL_THRESH:
+            scroll = -self.dy
+
+        return scroll
+
     #check collision with platforms
     def check_collision(self, platforms):
         for platform in platforms:
