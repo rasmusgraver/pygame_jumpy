@@ -9,10 +9,9 @@ class Player():
         self.screen = screen
         # self.imageLoader = imageLoader
         self.image = pygame.transform.scale(cat_image, (60, 63))
-        # Den enkle måten å kjøre rect på: 
+        # Den enkle måten å kjøre rect på: # self.rect = self.image.get_rect()
         self.width = 50
-        self.height = 60
-        # self.rect = self.image.get_rect()
+        self.height = 60      
         self.rect = pygame.Rect(0, 0, self.width, self.height)
         self.rect.center = (x,y)
         self.dy = 0
@@ -44,7 +43,9 @@ class Player():
 
         scroll = 0
         if self.rect.top < SCROLL_THRESH:
-            scroll = -self.dy
+            scroll = -self.dy # HMM? Litt rart å bruke dy her? Og: TODO: Må flytte vår rect.y nedover?
+            # Funka sånn delvis, self.rect.y = SCROLL_THRESH
+            self.rect.y += scroll
 
         return scroll
 
