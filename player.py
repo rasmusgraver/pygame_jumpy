@@ -8,7 +8,7 @@ class Player():
     def __init__(self, screen, x, y):
         self.screen = screen
         # self.imageLoader = imageLoader
-        self.image = pygame.transform.scale(cat_image, (60, 63))
+        self.image = cat_image
         # Den enkle måten å kjøre rect på: # self.rect = self.image.get_rect()
         self.width = 50
         self.height = 60      

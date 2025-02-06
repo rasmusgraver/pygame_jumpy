@@ -27,46 +27,41 @@ platform_group = pygame.sprite.Group()
 init_platforms(platform_group)
 
 def draw_bg(bg_scroll):
-	screen.blit(bg_image, (0, 0 + bg_scroll))
-	screen.blit(bg_image, (0, -SCREEN_HEIGHT + bg_scroll))
-
-def main():
-
-    bg_scroll = 0
-
-    run = True
-    while run:
-
-        clock.tick(FPS)
-
-        # Check for move / keypresses:
-        jumpy.check_collision(platform_group)
-        scroll = jumpy.move()
-
-        # Draw background
-        # Bedre bare å ha bakgrunnen fast?
-        # screen.blit(bg_image, (0,0))
-        bg_scroll += scroll
-        draw_bg(bg_scroll)
-
-        # Update platforms
-        platform_group.update(scroll)
-
-        # Draw sprites
-        platform_group.draw(screen)
-        jumpy.draw()
-
-        # event handler
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-        
-        pygame.display.update()
+	screen.blit(bg_image, (0, bg_scroll))
+	screen.blit(bg_image, (0, bg_scroll - SCREEN_HEIGHT))
 
 
-    pygame.quit()
+bg_scroll = 0
+
+run = True
+while run:
+
+    clock.tick(FPS)
+
+    # Check for move / keypresses:
+    jumpy.check_collision(platform_group)
+    scroll = jumpy.move()
+
+    # Draw background
+    # Bedre bare å ha bakgrunnen fast?
+    # screen.blit(bg_image, (0,0))
+    bg_scroll += scroll
+    draw_bg(bg_scroll)
+
+    # Update platforms
+    platform_group.update(scroll)
+
+    # Draw sprites
+    platform_group.draw(screen)
+    jumpy.draw()
+
+    # event handler
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+    
+    pygame.display.update()
 
 
-
-main()
+pygame.quit()
 

@@ -6,6 +6,7 @@ cat_image = pygame.image.load("assets/katt3.png").convert_alpha()
 jumpy_image = pygame.image.load("assets/jumpy_cut.png").convert_alpha()
 wood_image = pygame.image.load("assets/wood.png").convert_alpha()
 
+cat_image = pygame.transform.scale(cat_image, (60, 63))
 
 # Kanskje ikke trenger:
 """
